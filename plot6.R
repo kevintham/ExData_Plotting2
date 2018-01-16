@@ -24,6 +24,7 @@ plot6 <- function() {
   names(pm25_baLA_onroad_year)[1] <- 'city'
   pm25_baLA_onroad_year$city <- as.factor(pm25_baLA_onroad_year$city)
   levels(pm25_baLA_onroad_year$city) <- c('LA','Baltimore')
+  pm25_baLA_onroad_year$year <- as.factor(pm25_baLA_onroad_year$year)
   
   g <- ggplot(pm25_baLA_onroad_year, aes(year, Total.Emissions))
   g + geom_bar(stat='identity') + facet_grid(city ~., scales='free_y') +

@@ -20,7 +20,7 @@ plot5 <- function() {
   NEI_balt_onroad <- subset(NEI, fips==baltimore & type=='ON-ROAD')
   pm25_balt_onroad_year <- NEI_balt_onroad[,c('year','Emissions')] %>% 
     group_by(year) %>% summarise(Total.Emissions = sum(Emissions))
-  
+  pm25_balt_onroad_year$year <- as.factor(pm25_balt_onroad_year$year)
   g <- ggplot(pm25_balt_onroad_year, aes(year, Total.Emissions)) + geom_bar(stat='identity')
   g + ggtitle("Emissions from motor vehicle sources in Baltimore")
   ggsave('plot5.png')
